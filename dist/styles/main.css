@@ -1,16 +1,61 @@
+:root {        
+    --highlight: #DEB841;
+    --accent: #DE9E36;
+    --background-primary: #BFBDC1;
+    --background-secondary: #6D6A75;    
+    --base-text-color: #37323E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    color: var(--base-text-color);
+}
+
+body {
+    padding: 1em;
+    background-color: var(--base-text-color);
+
+    display: grid;
+    grid-template-columns: 1fr;
+        grid-template-areas: 
+            "header"
+            "nav"
+            "content"
+            "footer";    
+}
+
 header {
-    background-color: red;
+    grid-area: header;
+    padding: 1em;
+    background-color: var(--accent);
 }
 
 nav {
-    background-color: orange;
+    grid-area: nav;
+    padding-left: 1em;
+    background-color: var(--background-secondary);
 }
 
 main {
-    background-color: yellow;
+    grid-area: content;
+    padding: 1em;
+    background-color: var(--background-primary);
 }
 
 footer {
-    background-color: green;
-    color: white;
+    grid-area: footer;
+    padding: 1em;
+    background-color: var(--highlight);
+    color: black;
+}
+
+@media screen and (min-width: 736px) {
+    body {
+        grid-template-columns: 250px 1fr;
+        grid-template-areas: 
+        "header header"
+        "nav content"
+        "footer footer";
+    }
 }
