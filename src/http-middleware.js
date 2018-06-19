@@ -3,9 +3,11 @@ class HttpMiddleWare {
     this._handlers = [];
   }
 
-  process(request, response) {
+  process(request, response, next) {
     if(this._handlers[request.method]) {
-      this._handlers[request.method](request, response, this._next ? () => this._next.process(request, response) : () => { });
+      this._handlers[request.method](request, response, next);
+    } else {
+      next();
     }
   }
 }

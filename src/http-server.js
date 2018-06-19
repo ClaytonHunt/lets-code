@@ -14,7 +14,7 @@ class MethodNotAllowedMiddleware extends HttpMiddleware {
 }
 
 class HttpServer {
-  constructor(port = 3000) {
+  constructor(port = 80) {
     this._server = http.createServer(this._requestHandler.bind(this));
     this._server.on('clientError', this._errorHandler.bind(this));    
     this._middleware = [];
