@@ -1,18 +1,32 @@
+import { initializeContext, triggerUpdate } from "./core.js";
+
 const context = {
-  siteMap: [1, 2]
+  headerMessage: "Top of the Page!",
+  siteMap: [{
+    label: "Home",
+    url: "/"
+  }, {
+    label: "About",
+    url: "/about"
+  }]
 };
 
-const loops = document.querySelectorAll("[data-each]");
+initializeContext(document.body, context);
 
-loops.forEach((el) => {
-  const array = el.dataset.each;
-  const template = el.innerHTML;
-
-  let children = "";
-
-  (context[array] || []).forEach((item) => {
-    children += template;
+setTimeout(() => {
+  context.headerMessage += " Test";
+  context.siteMap.push({
+    label: "Questions",
+    url: "/"
   });
 
-  el.innerHTML = children;
-});
+  triggerUpdate();
+}, 1000);
+
+setTimeout(() => {
+  context.headerMessage += " Test";
+  context.siteMap = context.siteMap.slice(0, 2);
+  context.siteMap[1].label = "Wowza!";
+  
+  triggerUpdate();
+}, 2000);

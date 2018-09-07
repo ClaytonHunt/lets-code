@@ -47,6 +47,8 @@ class StaticFilesMiddleware extends HttpMiddleWare {
         return "text/html";
       case "css":
         return "text/css";
+      case "js":
+        return "application/javascript";
       default:
         return "text/plain";
     }
